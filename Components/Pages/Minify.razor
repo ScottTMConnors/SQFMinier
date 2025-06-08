@@ -1,0 +1,31 @@
+@page "/minify"
+@rendermode InteractiveServer
+@using SQFMinier.Tools
+
+<PageTitle>Minify</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <textarea class="form-control minifier-box" readonly>@OutputCode</textarea>
+        </div>
+        <div class="col-md-6 mb-2">
+            <textarea class="form-control minifier-box" @bind="InputCode"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" @onclick="OnMinify">Minify</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string InputCode = string.Empty;
+    private string OutputCode = string.Empty;
+
+    private void OnMinify()
+    {
+        OutputCode = SQFMinifier.MinifyString(InputCode);
+    }
+}

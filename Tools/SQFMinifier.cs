@@ -66,6 +66,17 @@ public class SQFMinifier
     }
 
     /// <summary>
+    ///     Minifies SQF code provided as a string.
+    /// </summary>
+    /// <param name="code">SQF code to minify.</param>
+    /// <returns>The minified code.</returns>
+    public static string MinifyString(string code)
+    {
+        if (code == null) throw new ArgumentNullException(nameof(code));
+        return MinifyCode(code);
+    }
+
+    /// <summary>
     ///     Minifies an SQF file, reading from inputPath and optionally writing to outputPath.
     /// </summary>
     /// <param name="inputPath">Path to the source SQF file.</param>
